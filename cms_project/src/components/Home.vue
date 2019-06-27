@@ -37,7 +37,7 @@ export default {
             title:"新闻资讯",
             className:"back-news",
             route:{
-              name:'Home'
+              name:'NewList'
             }
           },
         {
