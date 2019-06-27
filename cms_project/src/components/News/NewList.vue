@@ -11,7 +11,7 @@
               <span>{{news.text}}</span>
               <div>
                 <p>{{news.comment}}</p>
-                <p>{{news.passtime}}</p>
+                <p>{{news.passtime | convertTime('YYYY-MM-DD')}}</p>
               </div>
             </div>
           </a>

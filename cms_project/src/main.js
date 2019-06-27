@@ -44,6 +44,15 @@ Vue.component(NavBar.name,NavBar);
 
 
 
+//定义全局的过滤器 开始
+import Moment from 'moment'
+Vue.filter('convertTime',function (data,formatStr) {
+  //由于这个日期的格式过老  所以下面我们用当前日期
+  return Moment().format(formatStr)
+})
+//定义全局的过滤器 结束
+
+
 
 /* eslint-disable no-new */
 new Vue({
