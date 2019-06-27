@@ -6,7 +6,7 @@
     <router-view/>
 
     <!--底部-->
-    <mt-tabbar v-model="selected">
+    <mt-tabbar v-model="selected" fixed>
       <mt-tab-item id="Home">
         <img slot="icon" src="../static/img/home.png">
         首页
