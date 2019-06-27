@@ -36,6 +36,9 @@ import MyLi from '@/components/common/MYLi';
 Vue.component(MyUl.name,MyUl);
 Vue.component(MyLi.name,MyLi);
 
+import NavBar from '@/components/common/NavBar'
+Vue.component(NavBar.name,NavBar);
+
 //九宫格组件  结束
 
 
