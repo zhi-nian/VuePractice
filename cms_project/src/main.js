@@ -26,8 +26,19 @@ import Installer from '@/plugins/installer';
 Vue.use(Installer);
 //给Vue的原型 挂在$axios属性
 Vue.prototype.$axios = Axios;
-// Axios.defaults.baseURL = 'https://wwww.sinya.online/api/'
+// Axios.defaults.baseURL = 'https://www.apiopen.top/'这里由于我们的就扣都是网上找的免费的接口  就不设置baseURL了
 //axios 结束
+
+
+//九宫格组件  开始
+import MyUl from '@/components/common/MyUl';
+import MyLi from '@/components/common/MYLi';
+Vue.component(MyUl.name,MyUl);
+Vue.component(MyLi.name,MyLi);
+
+//九宫格组件  结束
+
+
 
 
 

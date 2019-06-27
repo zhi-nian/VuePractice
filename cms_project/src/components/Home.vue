@@ -8,19 +8,16 @@
     </mt-swipe>
 
 
-    <test></test>
-
-
     <!--九宫格-->
     <div class="grid">
-      <ul>
-        <li v-for="(module,index) in modules" :key="index">
+      <my-ul>
+        <my-li v-for="(module,index) in modules" :key="index">
           <router-link :to="module.route">
             <span :class="module.className"></span>
             <div>{{module.title}}</div>
           </router-link>
-        </li>
-      </ul>
+        </my-li>
+      </my-ul>
     </div>
 
 
@@ -129,17 +126,8 @@ export default {
   .back-news {
     background-image: url("../../static/img/member.png");
   }
-  ul {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
 
-  li {
-    /*list-style: none;*/
-    float: left;
-    width: 33.333333%;
-    text-align: center;
-  }
+
+
 
 </style>
