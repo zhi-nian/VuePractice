@@ -7,19 +7,19 @@
 
     <!--底部-->
     <mt-tabbar v-model="selected">
-      <mt-tab-item id="首页">
+      <mt-tab-item id="Home">
         <img slot="icon" src="../static/img/home.png">
         首页
       </mt-tab-item>
-      <mt-tab-item id="会员">
+      <mt-tab-item id="Member">
         <img slot="icon" src="../static/img/member.png">
         会员
       </mt-tab-item>
-      <mt-tab-item id="购物车">
+      <mt-tab-item id="Shopcart">
         <img slot="icon" src="../static/img/shopping_cat.png">
         购物车
       </mt-tab-item>
-      <mt-tab-item id="查找">
+      <mt-tab-item id="Search">
         <img slot="icon" src="../static/img/search.png">
         查找
       </mt-tab-item>
@@ -34,6 +34,14 @@ export default {
       return {
           selected: ''
       }
+  },
+  watch:{
+    selected:function (newV,oldV) {//不能使用箭头函数  应为this 会向上绑定
+        console.log(newV)
+        this.$router.push({
+          name:newV
+        })
+    }
   }
 }
 </script>
