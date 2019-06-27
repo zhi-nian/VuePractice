@@ -44,7 +44,10 @@ export default {
           title:"图文分享",
           className:"back-news",
           route:{
-            name:'Home'
+            name:'PhotoList',
+            query:{
+                categoryId:0//默认种类
+            }
           }
         },
         {
