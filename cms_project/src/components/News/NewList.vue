@@ -5,7 +5,7 @@
     <div>
       <ul>
         <li v-for="(news,index) in newsList" :key="index">
-          <a href="#">
+          <router-link :to="{ name:'NewsDetail',params:{uid:news.uid} }">
             <img :src="news.header" alt="">
             <div>
               <span>{{news.text}}</span>
@@ -14,7 +14,7 @@
                 <p>{{news.passtime | convertTime('YYYY-MM-DD')}}</p>
               </div>
             </div>
-          </a>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -63,6 +63,12 @@
   a img {
     float: left;
     height: 100px;
+  }
+
+  a {
+    height: 100px;
+    display: inline-block;
+    width: 100%;
   }
 
   p:first-child {
