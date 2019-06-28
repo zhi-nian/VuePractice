@@ -4,8 +4,10 @@
     <div class="photo-head">
       <ul>
         <li v-for="(item,index) in categories" :key="index">
-          <a href="javascript:;" @click="navigateToById(index)">{{item.data.title}}</a>
-          <!--<a href="javascript:;" @click="loadImgsById(index)">{{item.data.title}}</a>-->
+          <!--这种返回就有点问题了-->
+          <!--<a href="javascript:;" @click="navigateToById(index)">{{item.data.title}}</a>-->
+          <!--这种地址栏参数没有跟着变更-->
+          <a href="javascript:;" @click="loadImgsById(index)">{{item.data.title}}</a>
         </li>
       </ul>
     </div>
