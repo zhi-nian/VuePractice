@@ -27,6 +27,34 @@ Vue.use(Installer);
 //给Vue的原型 挂在$axios属性
 Vue.prototype.$axios = Axios;
 // Axios.defaults.baseURL = 'https://www.apiopen.top/'这里由于我们的就扣都是网上找的免费的接口  就不设置baseURL了
+
+//定义拦截器
+//1、请求发起前显示loading，
+Axios.interceptors.request.use(function (config) {
+  // 在发送请求之前做些什么
+  MintUI.Indicator.open({
+    text: 'Loading...',
+    spinnerType: 'fading-circle'
+  });
+  return config;
+}, function (error) {
+  // 对请求错误做些什么
+  return Promise.reject(error);
+});
+
+//2、响应回来后就隐藏loading，
+Axios.interceptors.response.use(function (response) {
+  // 对响应数据做点什么
+  MintUI.Indicator.close();
+  return response;
+}, function (error) {
+  // 对响应错误做点什么
+  return Promise.reject(error);
+});
+
+
+
+
 //axios 结束
 
 
