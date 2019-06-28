@@ -8,19 +8,28 @@
     <!--底部-->
     <mt-tabbar v-model="selected" fixed>
       <mt-tab-item id="Home">
-        <img slot="icon" src="../static/img/home.png">
-        首页
+        <div @click="change('Home')">
+          <img slot="icon" src="../static/img/home.png">
+        </div>
+          首页
+
       </mt-tab-item>
       <mt-tab-item id="Member">
-        <img slot="icon" src="../static/img/member.png">
+        <div @click="change('Member')">
+          <img slot="icon" src="../static/img/member.png">
+        </div>
         会员
       </mt-tab-item>
       <mt-tab-item id="Shopcart">
-        <img slot="icon" src="../static/img/shopping_cat.png">
+        <div @click="change('Shopcart')">
+          <img slot="icon" src="../static/img/shopping_cat.png">
+        </div>
         购物车
       </mt-tab-item>
       <mt-tab-item id="Search">
-        <img slot="icon" src="../static/img/search.png">
+        <div @click="change('Search')">
+          <img slot="icon" src="../static/img/search.png">
+        </div>
         查找
       </mt-tab-item>
     </mt-tabbar>
@@ -35,17 +44,32 @@ export default {
           selected: ''
       }
   },
+  methods:{
+      change:function (val) {
+        this.$router.push({
+          name:val
+        })
+      }
+  },
   watch:{
     selected:function (newV,oldV) {//不能使用箭头函数  应为this 会向上绑定
-        console.log(newV)
-        this.$router.push({
-          name:newV
-        })
+
+//      监听属性 跳转  会导致内部内容与tabbar存在一样的路由不能进行跳转
+//      如：进入新闻资讯 然后点击tabbar中的首页 不能跳回主页bug
+//        console.log(newV)
+//        this.$router.push({
+//          name:newV
+//        })
     }
   }
 }
 </script>
 
-<style>
+<style scoped>
+
+  img {
+    width: 25%;
+    margin-bottom: 5px;
+  }
 
 </style>
