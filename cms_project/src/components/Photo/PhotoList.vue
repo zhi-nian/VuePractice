@@ -15,7 +15,10 @@
       <ul>
         <li v-for="(img,index) in imgs" :key="index">
           <a href="#">
-            <img :src="img.header" :alt="img.text">
+            <!--<img :src="img.header" :alt="img.text">-->
+            <!--<img v-if="$route.query.categoryId === 0" v-lazy="img.header" :alt="img.text">-->
+            <!--<img v-else :src="img.header" :alt="img.text">-->
+            <img v-lazy="img.header" :alt="img.text">
             <p>
               <span>{{img.text}}</span>
               <br>
@@ -39,6 +42,9 @@
             })
         },
         loadImgsById (categoryId) {
+          //解决懒加载缓存图片
+            this.imgs = [];
+
           //发起请求
           this.$axios.get('https://www.apiopen.top/satinGodApi?type=3&page=' + categoryId)
             .then(res=>{
@@ -73,6 +79,8 @@
       // 可以访问组件实例 `this`
 //      console.log(to)
 //      console.log(from)
+
+
 
       let { categoryId } = to.query;
       this.loadImgsById(categoryId);
