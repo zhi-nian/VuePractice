@@ -14,7 +14,7 @@
     <div class="photo-list">
       <ul>
         <li v-for="(img,index) in imgs" :key="index">
-          <a href="#">
+          <router-link :to="{ name:'PhotoDetail',params:{id:index} }">
             <!--<img :src="img.header" :alt="img.text">-->
             <!--<img v-if="$route.query.categoryId === 0" v-lazy="img.header" :alt="img.text">-->
             <!--<img v-else :src="img.header" :alt="img.text">-->
@@ -24,7 +24,7 @@
               <br>
               <span>{{img.top_commentsContent}}</span>
             </p>
-          </a>
+          </router-link>
         </li>
       </ul>
 
