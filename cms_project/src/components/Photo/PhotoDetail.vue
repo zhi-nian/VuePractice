@@ -17,11 +17,16 @@
           <!--<img v-lazy="item.header" alt="item.header">-->
         <!--</my-li>-->
       <!--</my-ul>-->
+
+      <!--图文详情内容-->
       <div class="clear">
         <p v-for="(item,index) in details" :key="index">{{ item.text }}</p>
       </div>
     </div>
 
+
+    <!--使用评论组件-->
+    <comment :sid="$route.params.sid"></comment>
 
   </div>
 </template>

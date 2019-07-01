@@ -79,25 +79,30 @@ Vue.use(VuePreview)
 
 
 
-//九宫格组件  开始
+//全局组件  开始
 import MyUl from '@/components/common/MyUl';
 import MyLi from '@/components/common/MYLi';
 Vue.component(MyUl.name,MyUl);
 Vue.component(MyLi.name,MyLi);
-
 import NavBar from '@/components/common/NavBar'
 Vue.component(NavBar.name,NavBar);
+import Comment from '@/components/common/Comment'
+Vue.component(Comment.name,Comment);
 
-//九宫格组件  结束
+//全局组件  结束
 
 
 
 
 //定义全局的过滤器 开始
 import Moment from 'moment'
+Moment.locale('zh-cn');
 Vue.filter('convertTime',function (data,formatStr) {
   //由于这个日期的格式过老  所以下面我们用当前日期
-  return Moment().format(formatStr)
+  return Moment(data).format(formatStr)
+})
+Vue.filter('relTime',function (data) {
+  return Moment(data).fromNow()
 })
 //定义全局的过滤器 结束
 
