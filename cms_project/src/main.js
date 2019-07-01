@@ -58,6 +58,27 @@ Axios.interceptors.response.use(function (response) {
 //axios 结束
 
 
+
+//vue-preview 开始
+import VuePreview from 'vue-preview';
+
+// defalut install
+Vue.use(VuePreview)
+
+//vue-preview 结束
+
+
+
+
+
+
+
+
+
+
+
+
+
 //九宫格组件  开始
 import MyUl from '@/components/common/MyUl';
 import MyLi from '@/components/common/MYLi';
