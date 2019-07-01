@@ -54,7 +54,8 @@ export default {
           title:"商品展示",
           className:"back-news",
           route:{
-            name:'Home'
+            name:'GoodsShow',
+            params:{page:1}
           }
         },
         {

@@ -108,6 +108,27 @@ Vue.filter('relTime',function (data) {
 
 
 
+//控制字数显示的过滤器 开始
+
+Vue.filter('controllShow',function (str,num) {
+
+  if (str.length <= num) {
+    return str;
+  } else {
+    return str.substring(0,num - 1) + '...';
+  }
+
+})
+
+//控制字数显示的过滤器 结束
+
+
+
+
+
+
+
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
