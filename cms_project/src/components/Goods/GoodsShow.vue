@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div ref="wrapper" :style="{ height: wrapperHeight + 'px' }">
     <nav-bar title="商品列表"></nav-bar>
+    <mt-loadmore :auto-fill="autoFill" :bottom-method="loadBottom" @bottom-status-change="handleBottomChange" :bottom-all-loaded="allLoaded" ref="loadmore">
     <ul>
       <li v-for="(item , index) in goods" :key="index">
         <a>
@@ -25,26 +26,64 @@
 
 
     </ul>
+    </mt-loadmore>>
   </div>
 </template>
 <script>
 
   export default {
-      created () {
-          //获取页码
-          let  { page } = this.$route.params;
-
-          this.$axios.get(`https://www.apiopen.top/satinGodApi?type=3&page=${page}`)
+      methods:{
+        loadBottom () {
+            let addMore = [];
+            console.log('下拉了');
+            this.loadGoodsByPage();
+            this.$refs.loadmore.onBottomLoaded();
+        }  ,
+        handleBottomChange (status) {
+            this.bottomStatus = status;
+            console.log(this.bottomStatus)
+        },
+        loadGoodsByPage () {
+          this.$axios.get(`https://www.apiopen.top/satinGodApi?type=3&page=${this.page}`)
 
             .then (res => {
+
+              if(res.data.data.length < 20) {
+                  this.allLoaded = true;
+                  this.$toast('没有更多数据了！')
+                  return;
+              }
+
+
+
+              if (this.page === 1) {//初始数据
                 this.goods = res.data.data
+              } else {//下拉加载更多  追加数据
+                this.goods = this.goods.concat(res.data.data);
+              }
+
+
+
+              this.page ++;
             })
             .catch(console.log)
+        }
+      },
+      created () {
+          this.loadGoodsByPage();
 
+      },
+      mounted() {
+        this.wrapperHeight = document.documentElement.clientHeight - this.$refs.wrapper.getBoundingClientRect().top;
       },
       data () {
           return {
               goods : [],
+              allLoaded: false,
+              bottomStatus: '',
+              wrapperHeight: 0,
+              autoFill:false,//关闭自动检测
+              page:this.$route.params.page,
           }
       }
   }
@@ -53,7 +92,7 @@
 <style scoped>
 
   ul {
-    height: calc(100% - 150px);
+    /*height: calc(100% - 150px);*/
     overflow: scroll;
     padding: 0;
   }

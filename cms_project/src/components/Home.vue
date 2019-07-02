@@ -91,7 +91,7 @@ export default {
 
       this.$axios.get('https://www.apiopen.top/satinGodApi?type=3&page=1')
         .then(res=>{
-            console.log(res)
+//            console.log(res)
             this.imgs = res.data.data;
         })
         .catch(err=>console.log(err))

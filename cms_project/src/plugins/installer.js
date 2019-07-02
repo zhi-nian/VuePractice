@@ -8,7 +8,7 @@ function Installer() {
 
 Installer.install = function (Vue) {
   //接收Vue的构造函数 ，给原型挂在属性或者注册全局组件
-  console.log(Vue);
+  // console.log(Vue);
   //1、注册全局组件
   Vue.component('test',{
     template:'<h1>哈哈</h1>'
