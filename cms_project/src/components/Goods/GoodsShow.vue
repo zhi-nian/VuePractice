@@ -3,7 +3,9 @@
     <nav-bar title="商品列表"></nav-bar>
     <mt-loadmore :auto-fill="autoFill" :bottom-method="loadBottom" @bottom-status-change="handleBottomChange" :bottom-all-loaded="allLoaded" ref="loadmore">
     <ul>
+
       <li v-for="(item , index) in goods" :key="index">
+        <router-link :to="{name:'GoodsDetail',query:{id:index}}">
         <a>
           <img :src="item.header">
           <div class="title">{{ item.text | controllShow(10) }}</div>
@@ -22,6 +24,7 @@
             </div>
           </div>
         </a>
+        </router-link>
       </li>
 
 

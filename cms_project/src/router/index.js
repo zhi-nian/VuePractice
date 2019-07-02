@@ -9,6 +9,7 @@ import NewsDetail from '@/components/News/NewsDetail'
 import PhotoList from '@/components/Photo/PhotoList'
 import PhotoDetail from '@/components/Photo/PhotoDetail'
 import GoodsShow from '@/components/Goods/GoodsShow'
+import GoodsDetail from '@/components/Goods/GoodsDetail'
 
 Vue.use(Router)
 
@@ -58,6 +59,11 @@ export default new Router({
       path:'/goods/list/:page',
       name:'GoodsShow',
       component:GoodsShow
+    },
+    {//商品详情
+      path:'/goods/detail',
+      name:'GoodsDetail',
+      component:GoodsDetail
     }
   ]
 })
