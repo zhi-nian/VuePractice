@@ -39,7 +39,7 @@
           <mt-button type="primary" size="large" plain @click="goGoodsDetail">图文介绍</mt-button>
         </li>
         <li>
-          <mt-button type="danger" size="large" plain>商品评论</mt-button>
+          <mt-button type="danger" size="large" plain @click="goGoodsComment">商品评论</mt-button>
         </li>
       </ul>
     </div>
@@ -77,6 +77,14 @@
               name:'NewsDetail',
               params:{
                 uid:this.goodsId
+              }
+            })
+        },
+        goGoodsComment () {
+            this.$router.push({
+              name : 'GoodsComment',
+              query : {
+                  sid : this.info.soureid
               }
             })
         }
