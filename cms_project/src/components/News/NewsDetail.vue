@@ -1,8 +1,8 @@
 <template>
   <div>
-    <nav-bar title="新闻详情"></nav-bar>
+    <nav-bar :title="myTitle"></nav-bar>
     <div>
-      <h3>新闻标题</h3>
+      <h3>{{ newsInfo.text }}</h3>
       <div>
         <span>{{newsInfo.comment}}次点击</span>
         <span>作者：{{newsInfo.username}}</span>
@@ -84,8 +84,26 @@
       },
       data () {
           return {
-              newsInfo:{}//新闻详情数据
+              newsInfo:{},//新闻详情数据
+              myTitle:''
+
           }
+      },
+      beforeRouteEnter (to, from, next) {
+        //判断路由的来源
+        let title = '详情';
+        if (from.name === 'NewList') {
+            title = '新闻详情';
+        } else if ( from.name === 'GoodsDetail' ) {
+            title = '图文详情';
+        }
+
+
+        //// 不！能！获取组件实例 `this`
+        next(vm => {
+         // 通过 `vm` 访问组件实例
+          vm.myTitle = title;
+        })
       }
   }
 </script>

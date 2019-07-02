@@ -36,7 +36,7 @@
     <div class="product-info">
       <ul>
         <li>
-          <mt-button type="primary" size="large" plain>图文介绍</mt-button>
+          <mt-button type="primary" size="large" plain @click="goGoodsDetail">图文介绍</mt-button>
         </li>
         <li>
           <mt-button type="danger" size="large" plain>商品评论</mt-button>
@@ -70,6 +70,16 @@
               }
             ))
             .catch(console.log)
+      },
+      methods : {
+        goGoodsDetail () {
+            this.$router.push({
+              name:'NewsDetail',
+              params:{
+                uid:this.goodsId
+              }
+            })
+        }
       }
   }
 
