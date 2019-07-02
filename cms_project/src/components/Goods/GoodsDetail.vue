@@ -3,7 +3,8 @@
     <nav-bar title="商品详情"></nav-bar>
     <div class="outer-swiper">
       <div class="swiper">
-        我真的是轮播图
+        <!--这里采取直接传递轮播图数据对象的方法-->
+        <my-swipe :data="imgs"></my-swipe>
       </div>
     </div>
     <div class="product-desc">

@@ -88,6 +88,8 @@ import NavBar from '@/components/common/NavBar'
 Vue.component(NavBar.name,NavBar);
 import Comment from '@/components/common/Comment'
 Vue.component(Comment.name,Comment);
+import Swipe from '@/components/common/Swiper'
+Vue.component(Swipe.name,Swipe)
 
 //全局组件  结束
 

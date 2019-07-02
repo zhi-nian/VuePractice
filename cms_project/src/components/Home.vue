@@ -1,12 +1,8 @@
 <template>
   <div>
     <!--轮播图-->
-    <mt-swipe :auto="4000">
-      <mt-swipe-item v-for="(item,index) in imgs" :key="index">
-        <img :src="item.header" alt="">
-      </mt-swipe-item>
-    </mt-swipe>
-
+    <!--这里才去url传递的方式-->
+    <my-swipe url="https://www.apiopen.top/satinGodApi?type=3&page=1"></my-swipe>
 
     <!--九宫格-->
     <div class="grid">
@@ -85,8 +81,8 @@ export default {
   created () {
 
       //测试自己写的插件
-      this.$log = 'abc';
-      this.$log();
+//      this.$log = 'abc';
+//      this.$log();
 
 
       this.$axios.get('https://www.apiopen.top/satinGodApi?type=3&page=1')
@@ -101,15 +97,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .mint-swipe {
-    width:100%;
-    height:200px;
-  }
-
-  .mint-swipe img{
-    width:100%;
-    height:100%;
-  }
 
 /*九宫格样式*/
 /*  img {
