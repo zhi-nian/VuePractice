@@ -16,15 +16,18 @@
         </li>
         <li class="price-li">市场价：
           <s>￥{{ info.up }}</s> 销售价：<span>￥{{ info.down }}</span></li>
-        <li class="number-li">购买数量：<span>-</span><span>1</span><span>+</span></li>
+        <li class="number-li">购买数量：<span @click="subtract">-</span><span>{{ buyNum }}</span><span @click="add">+</span></li>
         <li>
           <mt-button type="primary">立即购买</mt-button>
-          <mt-button type="danger">加入购物车</mt-button>
+          <mt-button type="danger" @click="addShopCart">加入购物车</mt-button>
         </li>
       </ul>
     </div>
 
-    <div class="ball"></div>
+    <!--加入购物车后的 过度效果-->
+    <transition name="ball" @after-enter="ballAfterEnter">
+      <div class="ball" v-if="isShow"></div>
+    </transition>
     <div class="product-props">
       <ul>
         <li>商品参数</li>
@@ -53,6 +56,8 @@
               goodsId:this.$route.query.id,
               imgs:[],//轮播图
               info:{},//商品信息
+              isShow:false,
+              buyNum:1
           }
       },
       created () {
@@ -72,6 +77,19 @@
             .catch(console.log)
       },
       methods : {
+        ballAfterEnter () {
+          this.isShow = false;
+        },
+        addShopCart () {
+            this.isShow = true;
+        },
+        subtract () {
+
+          this.buyNum > 1 && this.buyNum--;
+        },
+        add () {
+          this.buyNum < this.info.forward && this.buyNum++;
+        },
         goGoodsDetail () {
             this.$router.push({
               name:'NewsDetail',
@@ -93,6 +111,12 @@
 
 </script>
 <style scoped>
+
+  防止闪烁 与js部分同步
+  .ball-leave {
+    opacity: 0;
+  }
+
   .ball-enter-active {
     animation: bounce-in 1s;
   }
