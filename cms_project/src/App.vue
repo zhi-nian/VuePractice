@@ -49,6 +49,9 @@ export default {
   created () {
     Bus.$on('addBuyNum', (num) => {
         this.buyNum += num;
+    });
+    Bus.$on('changeShopCartNum', (num) => {
+      this.buyNum = num;
     })
   },
   methods:{

@@ -51,6 +51,7 @@
 <script>
 
   import Bus from '@/eventBus'
+  import GoodsTools from '@/goodsTools'
   export default {
       data () {
           return {
@@ -80,7 +81,8 @@
       methods : {
         ballAfterEnter () {
           this.isShow = false;
-          Bus.$emit('addBuyNum',this.buyNum)
+          Bus.$emit('addBuyNum',this.buyNum);
+          GoodsTools.addShopCart(this.goodsId,this.buyNum);//给购物车加入数据
         },
         addShopCart () {
             this.isShow = true;
