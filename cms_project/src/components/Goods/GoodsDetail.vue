@@ -50,6 +50,7 @@
 </template>
 <script>
 
+  import Bus from '@/eventBus'
   export default {
       data () {
           return {
@@ -79,6 +80,7 @@
       methods : {
         ballAfterEnter () {
           this.isShow = false;
+          Bus.$emit('addBuyNum',this.buyNum)
         },
         addShopCart () {
             this.isShow = true;

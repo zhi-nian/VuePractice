@@ -24,7 +24,7 @@
         <div @click="change('Shopcart')">
           <img slot="icon" src="../static/img/shopping_cat.png">
         </div>
-        购物车
+        购物车<mt-badge type="error" size="small">{{ buyNum }}</mt-badge>
       </mt-tab-item>
       <mt-tab-item id="Search">
         <div @click="change('Search')">
@@ -37,12 +37,19 @@
 </template>
 
 <script>
+  import Bus from './eventBus'
 export default {
   name: 'App',
   data ()  {
       return {
-          selected: ''
+          selected: '',
+          buyNum:0
       }
+  },
+  created () {
+    Bus.$on('addBuyNum', (num) => {
+        this.buyNum += num;
+    })
   },
   methods:{
       change:function (val) {
