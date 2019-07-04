@@ -3,7 +3,10 @@
     <!--顶部-->
     <mt-header title="信息管理系统"></mt-header>
 
-    <router-view/>
+    <transition name="fade" mode="out-in">
+      <router-view/>
+    </transition>
+
 
     <!--底部-->
     <mt-tabbar v-model="selected" fixed>
@@ -82,4 +85,10 @@ export default {
     margin-bottom: 5px;
   }
 
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 1s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
 </style>
