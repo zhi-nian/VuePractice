@@ -1,16 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
-import Member from '@/components/Member/Member'
-import Shopcart from '@/components/Shopcart/Shopcart'
-import Search from '@/components/Search/Search'
-import NewList from '@/components/News/NewList'
-import NewsDetail from '@/components/News/NewsDetail'
-import PhotoList from '@/components/Photo/PhotoList'
-import PhotoDetail from '@/components/Photo/PhotoDetail'
-import GoodsShow from '@/components/Goods/GoodsShow'
-import GoodsDetail from '@/components/Goods/GoodsDetail'
-import GoodsComment from '@/components/Goods/GoodsComment'
+
+// router懒加载
+const Home = () => import('@/components/Home')
+const Member = () => import('@/components/Member/Member')
+const Shopcart = () => import('@/components/Shopcart/Shopcart')
+const Search = () => import('@/components/Search/Search')
+const NewList = () => import('@/components/News/NewList')
+const NewsDetail = () => import('@/components/News/NewsDetail')
+const PhotoList = () => import('@/components/Photo/PhotoList')
+const PhotoDetail = () => import('@/components/Photo/PhotoDetail')
+const GoodsShow = () => import('@/components/Goods/GoodsShow')
+const GoodsDetail = () => import('@/components/Goods/GoodsDetail')
+const GoodsComment = () => import('@/components/Goods/GoodsComment')
 
 Vue.use(Router)
 
