@@ -52,6 +52,7 @@
 
   import Bus from '@/eventBus'
   import GoodsTools from '@/goodsTools'
+  import { mapActions } from 'vuex'
   export default {
       data () {
           return {
@@ -79,9 +80,14 @@
             .catch(console.log)
       },
       methods : {
+        ...mapActions([
+            'addNumByAction',
+            'changeNumByAction'
+        ]),
         ballAfterEnter () {
           this.isShow = false;
-          Bus.$emit('addBuyNum',this.buyNum);
+//          Bus.$emit('addBuyNum',this.buyNum);
+          this.addNumByAction(this.buyNum)
           GoodsTools.addShopCart(this.goodsId,this.buyNum);//给购物车加入数据
         },
         addShopCart () {
@@ -116,7 +122,7 @@
 </script>
 <style scoped>
 
-  防止闪烁 与js部分同步
+  /*防止闪烁 与js部分同步*/
   .ball-leave {
     opacity: 0;
   }

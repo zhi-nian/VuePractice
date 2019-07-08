@@ -27,7 +27,8 @@
         <div @click="change('Shopcart')">
           <img slot="icon" src="../static/img/shopping_cat.png">
         </div>
-        购物车<mt-badge type="error" size="small">{{ buyNum }}</mt-badge>
+        <!--购物车<mt-badge type="error" size="small">{{ buyNum }}</mt-badge>-->
+        购物车<mt-badge type="error" size="small">{{ getNum }}</mt-badge>
       </mt-tab-item>
       <mt-tab-item id="Search">
         <div @click="change('Search')">
@@ -41,21 +42,27 @@
 
 <script>
   import Bus from './eventBus'
+  import { mapGetters } from 'vuex'
 export default {
   name: 'App',
   data ()  {
       return {
           selected: '',
-          buyNum:0
+//          buyNum:0
       }
   },
+  computed:{
+    ...mapGetters([
+        'getNum'
+    ])
+  },
   created () {
-    Bus.$on('addBuyNum', (num) => {
+/*    Bus.$on('addBuyNum', (num) => {
         this.buyNum += num;
     });
     Bus.$on('changeShopCartNum', (num) => {
       this.buyNum = num;
-    })
+    })*/
   },
   methods:{
       change:function (val) {

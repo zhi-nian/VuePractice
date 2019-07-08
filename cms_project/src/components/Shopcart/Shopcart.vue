@@ -13,7 +13,7 @@
               <span @click="subtract(item)">-</span>
               <span>{{ item.buyNum }}</span>
               <span @click="add(item)">+</span>
-              <a href="javascript:;"  @click="del(index)">删除</a>
+              <a href="javascript:;"  @click="del(item,index)">删除</a>
             </div>
           </div>
         </li>
@@ -68,12 +68,15 @@ import Bus from '@/eventBus'
       methods:{
           subtract (goods) {
               goods.buyNum > 0 && goods.buyNum--;
+              goods.buyNum > 0 && this.$store.dispatch('addNumByAction',-1);
           },
           add (goods) {
             goods.buyNum < goods.forward && goods.buyNum++;
+            goods.buyNum < goods.forward && this.$store.dispatch('addNumByAction',1);
           },
-          del (index) {
+          del (goods,index) {
               this.selectedGoods.splice(index,1);
+            this.$store.dispatch('addNumByAction',0 - goods.buyNum);
           }
 
       },
@@ -108,8 +111,8 @@ import Bus from '@/eventBus'
         })
 
         //通讯
-        Bus.$emit('changeShopCartNum',total);
-
+//        Bus.$emit('changeShopCartNum',total);
+        this.$store.dispatch('changeNumByAction',total)
         next()
       } else {
         next(false)
